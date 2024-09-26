@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Department>
+@{
+    ViewData["Title"] = "Departments";
+}
+<h1>Departments</h1>
+<p>
+    <a asp-action="Create">Make a new department</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.Name)</th>
+            <th> @Html.DisplayNameFor(model => model.Administrator)</th>
+            <th> @Html.DisplayNameFor(model => model.Personality)</th>
+            <th> @Html.DisplayNameFor(model => model.Budget)</th>
+            <th> @Html.DisplayNameFor(model => model.StartTime)</th>
+            <th> @Html.DisplayNameFor(model => model.RowVersion)</th>
+            <th>Available actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <th> @Html.DisplayFor(modelItem => department.Name)</th>
+                <th> @Html.DisplayFor(modelItem => department.Administrator.FullName)</th>
+                <th> @Html.DisplayFor(modelItem => department.Personality)</th>
+                <th> @Html.DisplayFor(modelItem => department.Budget)</th>
+                <th> @Html.DisplayFor(modelItem => department.StartTime)</th>
+                <th> @Html.DisplayFor(modelItem => department.RowVersion)</th>
+                <td>
+                    <a asp-action="Details" asp-route-id="@department.DepartmentID" class="btn btn-dark">Details</a>
+                    <a asp-action="Edit" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit</a>
+                    <a asp-action="Edit Administrator" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit Admin</a>
+                    <a asp-action="Clone" asp-route-id="@department.DepartmentID" class="btn btn-dark">Clone</a>
+                    <a asp-action="Delete" asp-route-id="@department.DepartmentID" class="btn btn-dark">Disintegrate</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
