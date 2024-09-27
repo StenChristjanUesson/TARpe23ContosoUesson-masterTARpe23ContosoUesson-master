@@ -13,11 +13,13 @@ namespace ContosoUniversity.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index()
         {
             var schoolContext = _context.Departments.Include(d => d.Administrator);
             return View(await schoolContext.ToListAsync());
         }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,11 +38,11 @@ namespace ContosoUniversity.Controllers
             }
             return View(department);
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
-            ViewData["StudentID"] = new SelectList(_context.Students, "ID", "Lastname", "FirstMidName");
             return View();
         }
         [HttpPost]
@@ -57,5 +59,66 @@ namespace ContosoUniversity.Controllers
             return View(department);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var DepartmentToEdit = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+            if (DepartmentToEdit == null)
+            {
+                return NotFound();
+            }
+            return View(DepartmentToEdit);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("Name,Budget,StartTime,RowVersion,Instructor,Personality")] Department modifiedDepartment)
+        {
+            if (ModelState.IsValid)
+            {
+                if (modifiedDepartment.DepartmentID == null)
+                {
+                    return BadRequest();
+                }
+                _context.Departments.Update(modifiedDepartment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(modifiedDepartment);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var department = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+            if (department == null)
+            {
+                return NotFound();
+            }
+            return View(department);
+        }
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var department = await _context.Departments.FindAsync(id); 
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult>BaseOn([Bind("Name,Budget,StartTime,RowVersion,Instructor,Personality")]Department department)
+        {
+            return View(department);
+        }
     }
 }

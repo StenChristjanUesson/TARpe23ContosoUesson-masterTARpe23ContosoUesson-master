@@ -1,0 +1,48 @@
+﻿@model ContosoUniversity.Models.Department
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div>
+    <h4>Department data</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Personality" class="control-label"></label>
+                    <input asp-for="Personality" class="form-control" />
+                    <span asp-validation-for="Personality" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Budget" class="control-label"></label>
+                    <input asp-for="Budget" class="form-control" />
+                    <span asp-validation-for="Budget" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartTime" class="control-label"></label>
+                    <input asp-for="StartTime" class="form-control" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RowVersion" class="control-label"></label>
+                    <input asp-for="RowVersion" class="form-control" />
+                    <span asp-validation-for="RowVersion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Edit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <input type="hidden" asp-for="DepartmentID" />
+    <input type="submit" value="Edit" class="btn btn-warning" /> | <a asp-action="Index">Cancel</a>
+</div>
