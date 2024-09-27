@@ -88,6 +88,7 @@ namespace ContosoUniversity.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "Fullname", modifiedDepartment.InstructorID);
             return View(modifiedDepartment);
         }
 
@@ -116,9 +117,58 @@ namespace ContosoUniversity.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult>BaseOn([Bind("Name,Budget,StartTime,RowVersion,Instructor,Personality")]Department department)
+        [HttpGet]
+        public async Task<IActionResult>BaseOn(int? id)
         {
-            return View(department);
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var DepartmentToBaseOn = await _context.Departments
+                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+            if (DepartmentToBaseOn == null)
+            {
+                return NotFound();
+            }
+            return View(DepartmentToBaseOn);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BaseOn([Bind("Name,Budget,StartTime,RowVersion,Instructor,Personality")] Department BasedOnDepartment)
+        {
+            if (ModelState.IsValid)
+            {
+                if (BasedOnDepartment.DepartmentID == null)
+                {
+                    return BadRequest();
+                }
+                int lastID = _context.Departments.OrderBy(u => u.DepartmentID).Last().DepartmentID;
+                lastID++;
+                var selectedDepartment = new Department();
+                selectedDepartment.Name = BasedOnDepartment.Name;
+                selectedDepartment.Budget = BasedOnDepartment.Budget;
+                selectedDepartment.StartTime = BasedOnDepartment.StartTime;
+                selectedDepartment.RowVersion = BasedOnDepartment.RowVersion;
+                selectedDepartment.InstructorID = BasedOnDepartment.InstructorID;
+                selectedDepartment.Personality = BasedOnDepartment.Personality;
+                _context.Departments.Add(selectedDepartment);
+                await _context.SaveChangesAsync(true);
+                ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "Fullname", BasedOnDepartment.InstructorID);
+                return RedirectToAction("Index");
+            }
+            return View(BasedOnDepartment);
+        }
+        //public async Task<IActionResult> Clone(int? id)
+        //{
+        //    int lastID = _context.Students.OrderBy(u => u.ID).Last().ID;
+        //    lastID++;
+        //    var selectedStudent = new Student();
+        //    selectedStudent.FirstMidName = clonedStudent.FirstMidName;
+        //    selectedStudent.LastName = clonedStudent.LastName;
+        //    selectedStudent.EnrollmentDate = clonedStudent.EnrollmentDate;
+        //    _context.Students.Add(selectedStudent);
+        //    await _context.SaveChangesAsync(true);
+        //    return RedirectToAction("Index");
+        //}
     }
 }
