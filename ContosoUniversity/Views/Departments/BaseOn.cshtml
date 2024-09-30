@@ -1,7 +1,50 @@
-﻿@model ContosoUniversity.Models.Student
-
+﻿@model ContosoUniversity.Models.Department
 @{
     ViewData["Title"] = "BaseOn";
 }
 
 <h1>Base On</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BaseOn">
+            <input type="hidden" asp-for="RowVersion" value="@Html.Raw("0")" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Budget" class="control-label"></label>
+                <input asp-for="Budget" class="form-control">
+                <span asp-validation-for="Budget" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control">
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Personality" class="control-label"></label>
+                <input asp-for="Personality" class="form-control">
+                <span asp-validation-for="Personality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstructorID" class="control-label"></label>
+                <select asp-for="InstructorID" class="ˇform-control" asp-items="ViewBag.InstructorID">
+                    <option value="">-- Select Administrator --</option>
+                </select>
+                <span asp-validation-for="InstructorID" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <input type="hidden" asp-for="DepartmentID" />
+    <input type="submit" value="BaseOn" class="btn btn-warning" /> | <a asp-action="Index">Cancel</a>
+    <a asp-action="Create" asp-route-id="@Model.DepartmentID" class="btn btn-dark">Make</a>
+</div>

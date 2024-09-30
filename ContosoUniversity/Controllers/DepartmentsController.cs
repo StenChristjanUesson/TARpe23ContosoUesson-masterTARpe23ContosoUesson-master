@@ -148,7 +148,6 @@ namespace ContosoUniversity.Controllers
                 selectedDepartment.Name = BasedOnDepartment.Name;
                 selectedDepartment.Budget = BasedOnDepartment.Budget;
                 selectedDepartment.StartTime = BasedOnDepartment.StartTime;
-                selectedDepartment.RowVersion = BasedOnDepartment.RowVersion;
                 selectedDepartment.InstructorID = BasedOnDepartment.InstructorID;
                 selectedDepartment.Personality = BasedOnDepartment.Personality;
                 _context.Departments.Add(selectedDepartment);

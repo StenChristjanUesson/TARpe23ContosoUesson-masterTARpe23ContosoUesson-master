@@ -24,7 +24,7 @@ namespace ContosoUniversity.Models
         public string? Personality { get; set; }//Minu õpilaste iseloomu esindavad näited.
         public int? InstructorID { get; set; }
         [Timestamp]
-        public byte? RowVersion { get; set; }
+        public byte? RowVersion { get; set; }//Sometype of timestamp
         public Instructor? Administrator { get; set; }
         public ICollection<Course>? Courses { get; set; }
     }
