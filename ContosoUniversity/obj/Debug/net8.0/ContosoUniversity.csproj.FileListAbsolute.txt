@@ -808,7 +808,6 @@ C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Deb
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\opilane\source\repos\ues\TARpe23ContosoUesson\ContosoUniversity\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll

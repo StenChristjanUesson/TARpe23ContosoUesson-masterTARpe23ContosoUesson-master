@@ -88,7 +88,7 @@ namespace ContosoUniversity.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "Fullname", modifiedDepartment.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructors,"ID","Fullname",modifiedDepartment.InstructorID);
             return View(modifiedDepartment);
         }
 
@@ -98,8 +98,10 @@ namespace ContosoUniversity.Controllers
             {
                 return NotFound();
             }
+
             var department = await _context.Departments
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
+
             if (department == null)
             {
                 return NotFound();
@@ -112,8 +114,10 @@ namespace ContosoUniversity.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var department = await _context.Departments.FindAsync(id); 
+
             _context.Departments.Remove(department);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
