@@ -17,7 +17,8 @@ namespace ContosoUniversity.Controllers
             var schoolContext = _context.Courses.Include(d => d.CourseID);
             return View(await schoolContext.ToListAsync());
         }
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet]
+        public async Task<IActionResult> DetailsDelete(int? id)
         {
             if (id == null)
             {
@@ -33,24 +34,7 @@ namespace ContosoUniversity.Controllers
             }
             return View(course);
         }
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var course = await _context.Courses
-                .FirstOrDefaultAsync(m => m.CourseID == id);
-
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            return View(course);
-        }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DetailsDelete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
