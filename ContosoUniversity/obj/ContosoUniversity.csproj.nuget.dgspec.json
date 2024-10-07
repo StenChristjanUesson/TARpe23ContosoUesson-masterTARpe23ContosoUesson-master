@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\opilane\\source\\repos\\Ues\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj": {}
+    "C:\\Users\\opilane\\source\\repos\\TARpe23\\Uesson\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\opilane\\source\\repos\\Ues\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj": {
+    "C:\\Users\\opilane\\source\\repos\\TARpe23\\Uesson\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\opilane\\source\\repos\\Ues\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj",
+        "projectUniqueName": "C:\\Users\\opilane\\source\\repos\\TARpe23\\Uesson\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj",
         "projectName": "ContosoUniversity",
-        "projectPath": "C:\\Users\\opilane\\source\\repos\\Ues\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj",
+        "projectPath": "C:\\Users\\opilane\\source\\repos\\TARpe23\\Uesson\\TARpe23ContosoUesson\\ContosoUniversity\\ContosoUniversity.csproj",
         "packagesPath": "C:\\Users\\opilane\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\opilane\\source\\repos\\Ues\\TARpe23ContosoUesson\\ContosoUniversity\\obj\\",
+        "outputPath": "C:\\Users\\opilane\\source\\repos\\TARpe23\\Uesson\\TARpe23ContosoUesson\\ContosoUniversity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
